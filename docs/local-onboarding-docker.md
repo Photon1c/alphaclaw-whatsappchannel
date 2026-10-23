@@ -15,6 +15,18 @@ The image supplies dependencies; source mounts do not upgrade OpenClaw or npm
 dependencies. Rebuild the image after changing dependency pins. Use the supported
 Node version from the template Dockerfile.
 
+For OpenClaw 2026.10.6, use Node 24.22.1+ (24.x) or 26.12.1+.
+Run the test suite on both supported runtime floors with
+`npm test -- --maxWorkers=2`; the migration tests execute real Doctor processes.
+Bounded concurrency keeps these subprocesses from oversubscribing local/CI hosts.
+
+For a dependency-upgrade smoke test, verify the exact OpenClaw and Express
+versions inside the rebuilt image, then exercise authenticated `/api/status`,
+`/api/watchdog/status`, `/api/models`, and `/api/gateway/restart`. Confirm the
+gateway returns healthy after restart, not just that the Setup UI is reachable.
+Use disposable state and credentials; synthetic smoke tests do not validate live
+provider inference, channel delivery, or a production-state soak.
+
 ## Fresh onboarding without existing state
 
 For an isolated wizard check, use the same source mounts with a disposable volume

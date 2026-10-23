@@ -34,7 +34,7 @@
   "dependencies": {
     "express": "^5.2.1",
     "http-proxy": "^1.18.1",
-    "openclaw": "2026.10.2",
+    "openclaw": "2026.10.6",
     "ws": "^8.19.0"
   },
   "devDependencies": {
@@ -52,6 +52,6 @@
     "wouter-preact": "^3.7.1"
   },
   "engines": {
-    "node": ">=24.16.0 <25 || >=26.1.0"
+    "node": ">=24.22.1 <25 || >=26.12.1"
   }
 }
